@@ -1,0 +1,9 @@
+|volgnmr/beschrijving|Userstory|Testscenario|Test input|Verwachte uitkomst| Werkelijke uitkomst| Conclusie test
+|-|-|-|-|-|-|-
+|1.Lopen/Camera |Us-1: Als een speler wil ik kunnen rondlopen en verstoppen, zodat ik rond de map kan komen en me kan verstoppen voor de monsters|De speler staat in scene met een kleine ruimte om in te bewegen|De speler klikt op w,a,s,d|Je karakter beweegt rond met de juiste input|1|1
+|2.Verstoppen |Us-1: Als een speler wil ik kunnen rondlopen en verstoppen, zodat ik rond de map kan komen en me kan verstoppen voor de monsters|De speler staat in een scene met een verstop plek|De speler loopt in een verstop plek|De karakter kan zich verstoppen in een verstop plek|2|2
+|3.AI Pathfinding |Us-2: Als speler wil ik een enge ai monster hebben die rondjes om de map loopt|De speler start een scene met een ai monster|De speler start de scene en ziet de monster rondlopen|De ai monster loopt rond de map|3|3
+|4.Map |Us-3: Als speler wil ik een enge map hebben waar kamers met loot in zitten|De Speler staat in een scene met een map|De speler start de scene en loopt rond de map|De map is mooi|4|4
+|5.Kamers|Us-3: Als speler wil ik een enge map hebben waar kamers met loot in zitten|De speler staat in een scene met 1 van de kamers|De speler start de scene en staat in een kamer|De speler staat in een kamer|5|5
+|6.chest systeem|Us-4: Als speler wil ik een chest hebben met een randon reward|De speler staat in een kamer met een chest|De speler start de scene en open de chest met E|De speler ontvangt een random reward na het openen van de chest|6|6
+|7.Sanity meter|Us-5: Als speler wil ik een sanity meter die mijn visie gekker maakt als me sanity 0 is|De speler staat in een scene met een werkende sanity meter|De speler start de scene en de  sanity meter loopt naar beneden loopt|De speler krijgt een gekkere visie als de sanity meter op 0 staat|7|7

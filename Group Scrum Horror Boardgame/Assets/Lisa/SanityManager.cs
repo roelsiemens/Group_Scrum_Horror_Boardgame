@@ -35,7 +35,10 @@ public class SanityManager : MonoBehaviour
     {
         GUI.Box(new Rect (350, 10, Screen.width / 2 / (_maxSanity / _currentSanity), 25), "Sanity" + _currentSanity + "/" + _maxSanity);
     }
-
+    public float GetMaxSanity()
+    {
+        return _maxSanity;
+    }
     /// <summary>
     /// This method returns the current sanity value.
     /// </summary>

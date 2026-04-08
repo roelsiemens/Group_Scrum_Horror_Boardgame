@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 public class Ai_script : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
     public GameObject[] target;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public Transform player;          // speler referentie
+    public float detectionRange = 10f;
+    public float fieldOfView = 60f;
+
+    private bool playerDetected = false;
+
     void Start()
     {
         GoToRandomTarget();
@@ -14,9 +19,18 @@ public class Ai_script : MonoBehaviour
 
     void Update()
     {
-        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
+        DetectPlayer();
+
+        if (playerDetected)
         {
-            GoToRandomTarget();
+            navMeshAgent.SetDestination(player.position);
+        }
+        else
+        {
+            if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
+            {
+                GoToRandomTarget();
+            }
         }
     }
 
@@ -24,5 +38,36 @@ public class Ai_script : MonoBehaviour
     {
         int index = Random.Range(0, target.Length);
         navMeshAgent.SetDestination(target[index].transform.position);
+    }
+
+    void DetectPlayer()
+    {
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        // Check distance
+        if (distanceToPlayer < detectionRange)
+        {
+            // Check field of view
+            float angle = Vector3.Angle(transform.forward, directionToPlayer);
+
+            if (angle < fieldOfView / 2f)
+            {
+                Ray ray = new Ray(transform.position + Vector3.up, directionToPlayer);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, detectionRange))
+                {
+                    if (hit.transform == player)
+                    {
+                        playerDetected = true;
+                        Debug.DrawRay(ray.origin, ray.direction * detectionRange, Color.red);
+                        return;
+                    }
+                }
+            }
+        }
+
+        playerDetected = false;
     }
 }

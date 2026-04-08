@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sanityManager: {fileID: 741898598}
-  _audioClip: {fileID: 8300000, guid: 6fbd8b048a3e75306b1be1f2fbd8388f, type: 3}
+  _audioClip: {fileID: 8300000, guid: a365b68e1bfd2c3448196810012f319f, type: 3}
   _audioSource: {fileID: 27514815}
   jumpscare: 0
 --- !u!1 &27514814

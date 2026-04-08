@@ -6,17 +6,16 @@ public class Inventory : MonoBehaviour
     private bool rightHandEmpty = true;
     private bool itemInRange = false;
 
-    public GameObject item;
-    public GameObject leftHandItem;
-    public GameObject rightHandItem;
+    private GameObject item;
+    private GameObject leftHandItem;
+    private GameObject rightHandItem;
 
     private float leftHoldTimer = 0f;
     private float rightHoldTimer = 0f;
-    public float holdTimeToDrop = 1f;
+    private float holdTimeToDrop = 1f;
 
     private void Update()
     {
-        // PICKUP (unchanged)
         if (leftHandEmpty && Input.GetMouseButtonDown(0))
         {
             LeftHandPickup();
@@ -26,7 +25,6 @@ public class Inventory : MonoBehaviour
             RightHandPickup();
         }
 
-        // HOLD LEFT MOUSE → DROP LEFT HAND
         if (Input.GetMouseButton(0) && !leftHandEmpty)
         {
             leftHoldTimer += Time.deltaTime;
@@ -43,7 +41,6 @@ public class Inventory : MonoBehaviour
             leftHoldTimer = 0f;
         }
 
-        // HOLD RIGHT MOUSE → DROP RIGHT HAND
         if (Input.GetMouseButton(1) && !rightHandEmpty)
         {
             rightHoldTimer += Time.deltaTime;
@@ -85,6 +82,8 @@ public class Inventory : MonoBehaviour
             rightHandItem = item;
             rightHandItem.GetComponent<Rigidbody>().isKinematic = true;
             rightHandItem.GetComponent<Collider>().enabled = false;
+            item = null;
+            itemInRange = false;
             rightHandItem.transform.SetParent(transform);
             rightHandItem.transform.SetLocalPositionAndRotation(new Vector3(0.6f, 0, 0.75f), Quaternion.Euler(15, 0, 0));
             rightHandEmpty = false;
@@ -98,6 +97,8 @@ public class Inventory : MonoBehaviour
             leftHandItem = item;
             leftHandItem.GetComponent<Rigidbody>().isKinematic = true;
             leftHandItem.GetComponent<Collider>().enabled = false;
+            item = null;
+            itemInRange = false;
             leftHandItem.transform.SetParent(transform);
             leftHandItem.transform.SetLocalPositionAndRotation(new Vector3(-0.6f, 0, 0.75f), Quaternion.Euler(15, 0, 0));
             leftHandEmpty = false;

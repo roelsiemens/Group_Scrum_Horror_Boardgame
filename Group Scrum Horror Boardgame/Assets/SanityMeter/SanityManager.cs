@@ -31,9 +31,16 @@ public class SanityManager : MonoBehaviour
     }
 
     // testing stuff
-    private void OnGUI()
-    {
-        GUI.Box(new Rect (350, 10, Screen.width / 2 / (_maxSanity / _currentSanity), 25), "Sanity" + _currentSanity + "/" + _maxSanity);
+   // private void OnGUI()
+    // {
+        // GUI.Box(new Rect (350, 10, Screen.width / 2 / (_maxSanity / _currentSanity), 25), "Sanity" + _currentSanity + "/" + _maxSanity);
+   // }
+
+    /// <summary>
+    /// This method returns the maximun sanity value.
+    /// </summary>
+    public float GetMaxSanity(){
+        return _maxSanity;
     }
 
     /// <summary>

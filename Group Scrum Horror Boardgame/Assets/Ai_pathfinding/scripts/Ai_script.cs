@@ -9,6 +9,7 @@ public class Ai_script : MonoBehaviour
     public Transform player;          // speler referentie
     public float detectionRange = 10f;
     public float fieldOfView = 60f;
+    public float stopDistance = 3f;
 
     private bool playerDetected = false;
 
@@ -23,7 +24,16 @@ public class Ai_script : MonoBehaviour
 
         if (playerDetected)
         {
-            navMeshAgent.SetDestination(player.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer > stopDistance)
+            {
+                navMeshAgent.SetDestination(player.position);
+            }
+            else
+            {
+                navMeshAgent.ResetPath(); // stopt bewegen
+            }
         }
         else
         {

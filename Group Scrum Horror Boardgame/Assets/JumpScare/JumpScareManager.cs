@@ -5,9 +5,14 @@ public class JumpScareManager : MonoBehaviour
 {
     [SerializeField] private SanityManager _sanityManager;
 
+    [Header("Audio")]
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private AudioSource _audioSource;
 
+    // [Header("Animation")]
+    // [SerializeField] private Animation _jumpScareAnimation;
+
+    [Header("Testing")]
     [SerializeField] private bool jumpscare = false;
 
     private void Awake()
@@ -50,8 +55,14 @@ public class JumpScareManager : MonoBehaviour
 
     public void GetJumpScared(int ammount)
     {
+        // lock player controller
+        // decrease sanity
         _sanityManager.DrainCurrentSanity(ammount);
+        // play audio
         _audioSource.clip = _audioClip;
         _audioSource.Play();
+        // play animation
+
+        //release player controller
     }
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,6 +6,7 @@ public class Ai_script : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
     public GameObject[] target;
+    public GameObject[] teleportlocation;
 
     public Transform player;          // speler referentie
     public float detectionRange = 10f;
@@ -43,6 +45,13 @@ public class Ai_script : MonoBehaviour
             }
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform == player)
+        {
+            OnPlayerTouch();
+        }
+    }
 
     void GoToRandomTarget()
     {
@@ -79,5 +88,12 @@ public class Ai_script : MonoBehaviour
         }
 
         playerDetected = false;
+    }
+
+    void OnPlayerTouch()
+    {
+        Debug.Log("Speler aangeraakt");
+        int index = Random.Range(0, teleportlocation.Length);
+        player.position = teleportlocation[index].transform.position;
     }
 }

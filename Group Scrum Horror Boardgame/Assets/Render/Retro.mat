@@ -30,8 +30,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dither_Opacity: 0.2
-    - _Quantization_Levels: 16
+    - _Dither_Opacity: 0.15
+    - _Quantization_Levels: 10
+    - _Saturation_Layers: 5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

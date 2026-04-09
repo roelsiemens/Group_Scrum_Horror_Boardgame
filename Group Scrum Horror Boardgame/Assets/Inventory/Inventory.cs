@@ -1,30 +1,106 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     private bool leftHandEmpty = true;
     private bool rightHandEmpty = true;
-    private bool itemInRange = false;
 
-    private GameObject item;
     private GameObject leftHandItem;
     private GameObject rightHandItem;
+
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float pickupRange = 3f;
+    [SerializeField] private LayerMask pickupLayer;
 
     private float leftHoldTimer = 0f;
     private float rightHoldTimer = 0f;
     private float holdTimeToDrop = 1f;
 
+    public TextMeshProUGUI coinText;
+    public int coinsHeld;
+
     private void Update()
     {
-        if (leftHandEmpty && Input.GetMouseButtonDown(0))
+        HandlePickup();
+        HandleDrop();
+        UpdateUI();
+    }
+
+    private void HandlePickup()
+    {
+        if (Input.GetMouseButtonDown(0) && leftHandEmpty)
         {
-            LeftHandPickup();
-        }
-        if (rightHandEmpty && Input.GetMouseButtonDown(1))
-        {
-            RightHandPickup();
+            TryPickupLeft();
         }
 
+        if (Input.GetMouseButtonDown(1) && rightHandEmpty)
+        {
+            TryPickupRight();
+        }
+    }
+
+    private GameObject GetItemInSight()
+    {
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, pickupRange, pickupLayer))
+        {
+            if (hit.collider.CompareTag("pickUp"))
+            {
+                return hit.collider.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+    private void TryPickupLeft()
+    {
+        GameObject hitItem = GetItemInSight();
+
+        if (hitItem == null) return;
+
+        leftHandItem = hitItem;
+
+        PrepareItemForPickup(leftHandItem);
+        AttachToHand(leftHandItem, new Vector3(-0.6f, 0, 0.75f));
+
+        leftHandEmpty = false;
+    }
+
+    private void TryPickupRight()
+    {
+        GameObject hitItem = GetItemInSight();
+
+        if (hitItem == null) return;
+
+        rightHandItem = hitItem;
+
+        PrepareItemForPickup(rightHandItem);
+        AttachToHand(rightHandItem, new Vector3(0.6f, 0, 0.75f));
+
+        rightHandEmpty = false;
+    }
+
+    private void PrepareItemForPickup(GameObject item)
+    {
+        Rigidbody rb = item.GetComponent<Rigidbody>();
+        Collider col = item.GetComponent<Collider>();
+
+        if (rb != null) rb.isKinematic = true;
+        if (col != null) col.enabled = false;
+    }
+
+    private void AttachToHand(GameObject item, Vector3 localPos)
+    {
+        item.transform.SetParent(transform);
+        item.transform.SetLocalPositionAndRotation(localPos, Quaternion.Euler(15, 0, 0));
+    }
+
+    private void HandleDrop()
+    {
         if (Input.GetMouseButton(0) && !leftHandEmpty)
         {
             leftHoldTimer += Time.deltaTime;
@@ -58,74 +134,40 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("pickUp"))
-        {
-            itemInRange = true;
-            item = other.gameObject;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("pickUp"))
-        {
-            itemInRange = false;
-        }
-    }
-
-    private void RightHandPickup()
-    {
-        if (itemInRange && rightHandEmpty)
-        {
-            rightHandItem = item;
-            rightHandItem.GetComponent<Rigidbody>().isKinematic = true;
-            rightHandItem.GetComponent<Collider>().enabled = false;
-            item = null;
-            itemInRange = false;
-            rightHandItem.transform.SetParent(transform);
-            rightHandItem.transform.SetLocalPositionAndRotation(new Vector3(0.6f, 0, 0.75f), Quaternion.Euler(15, 0, 0));
-            rightHandEmpty = false;
-        }
-    }
-
-    private void LeftHandPickup()
-    {
-        if (itemInRange && leftHandEmpty)
-        {
-            leftHandItem = item;
-            leftHandItem.GetComponent<Rigidbody>().isKinematic = true;
-            leftHandItem.GetComponent<Collider>().enabled = false;
-            item = null;
-            itemInRange = false;
-            leftHandItem.transform.SetParent(transform);
-            leftHandItem.transform.SetLocalPositionAndRotation(new Vector3(-0.6f, 0, 0.75f), Quaternion.Euler(15, 0, 0));
-            leftHandEmpty = false;
-        }
-    }
-
     private void DropLeftHand()
     {
-        if (!leftHandEmpty)
-        {
-            leftHandItem.transform.SetParent(null);
-            leftHandItem.GetComponent<Rigidbody>().isKinematic = false;
-            leftHandItem.GetComponent<Collider>().enabled = true;
-            leftHandItem = null;
-            leftHandEmpty = true;
-        }
+        if (leftHandEmpty) return;
+
+        ReleaseItem(leftHandItem);
+        leftHandItem = null;
+        leftHandEmpty = true;
     }
 
     private void DropRightHand()
     {
-        if (!rightHandEmpty)
+        if (rightHandEmpty) return;
+
+        ReleaseItem(rightHandItem);
+        rightHandItem = null;
+        rightHandEmpty = true;
+    }
+
+    private void ReleaseItem(GameObject item)
+    {
+        item.transform.SetParent(null);
+
+        Rigidbody rb = item.GetComponent<Rigidbody>();
+        Collider col = item.GetComponent<Collider>();
+
+        if (rb != null) rb.isKinematic = false;
+        if (col != null) col.enabled = true;
+    }
+
+    private void UpdateUI()
+    {
+        if (coinText != null)
         {
-            rightHandItem.transform.SetParent(null);
-            rightHandItem.GetComponent<Rigidbody>().isKinematic = false;
-            rightHandItem.GetComponent<Collider>().enabled = true;
-            rightHandItem = null;
-            rightHandEmpty = true;
+            coinText.text = "Coins: " + coinsHeld;
         }
     }
 }

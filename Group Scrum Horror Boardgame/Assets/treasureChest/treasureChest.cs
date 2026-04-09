@@ -22,6 +22,8 @@ public class treasureChest : MonoBehaviour
     public int minGoldInChest = 250;
     public int maxGoldInChest = 500;
 
+    private Inventory playerInventory;
+
     private void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
@@ -30,11 +32,11 @@ public class treasureChest : MonoBehaviour
     }
     private void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInRange && Input.GetKeyUp(KeyCode.E))
         {
             meshFilter.mesh = openedChestMesh;
             treasureReward();
-            chestText.text = "Press 'Q' to pick up";
+            chestText.text = "Press 'E' to pick up";
             if (!coinsInChest)
             {
                 chestCollider.enabled = false;
@@ -42,21 +44,21 @@ public class treasureChest : MonoBehaviour
                 chestText.text = "";
             }
         }
-        if (isPlayerInRange && coinsInChest && Input.GetKeyDown(KeyCode.Q))
+        if (isPlayerInRange && coinsInChest && Input.GetKeyDown(KeyCode.E))
         {
             coinsInChest = false;
             coins.SetActive(false);
             chestCollider.enabled = false;
             isPlayerInRange = false;
             chestText.text = "";
-            Debug.Log("You picked up " + goldCoinsFound + " gold coins!");
+            playerInventory.coinsHeld += goldCoinsFound;
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player has entered the treasure chest area. Press 'E' to open it.");
+            playerInventory = other.GetComponent<Inventory>();
             isPlayerInRange = true;
             if (!coinsInChest)
             {
@@ -73,7 +75,6 @@ public class treasureChest : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player has left the treasure chest area.");
             isPlayerInRange = false;
             chestText.text = "";
         }
@@ -98,7 +99,6 @@ public class treasureChest : MonoBehaviour
             coinsInChest = true;
             coins.SetActive(true);
             goldAmountInChest();
-            Debug.Log("You found gold coins!");
         }
     }
 

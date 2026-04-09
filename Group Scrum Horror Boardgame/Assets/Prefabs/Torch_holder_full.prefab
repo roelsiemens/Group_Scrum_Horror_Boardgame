@@ -4979,7 +4979,7 @@ Transform:
   m_GameObject: {fileID: 8656149907702015103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.046333, y: -8.377298, z: -54.66063}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5009,15 +5009,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b114a87ac3412641996879bf4cf4de3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.650955
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b114a87ac3412641996879bf4cf4de3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.377298
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b114a87ac3412641996879bf4cf4de3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 53.66063
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b114a87ac3412641996879bf4cf4de3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5083,15 +5083,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.353
+      value: 0.301
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.2
+      value: -0.223
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 53.66063
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5128,6 +5128,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
+      propertyPath: m_TagString
+      value: pickUp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

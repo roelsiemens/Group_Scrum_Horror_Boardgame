@@ -9,8 +9,8 @@ public class Altar : MonoBehaviour
 
     private bool inRange = false;
 
-    private float maxY = 0.5f;
-    private float minY = -0.5f;
+    private float maxY = 0f;
+    private float minY = -1.01f;
 
     private float moveSpeed = 1f;
 

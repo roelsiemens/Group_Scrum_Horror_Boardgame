@@ -1,6 +1,6 @@
 # Test_1 
 
-## Heydin: 
+## Hedin: 
 ### Player controller
 - loop system is best snel, lijkt meer als op je sprint
 

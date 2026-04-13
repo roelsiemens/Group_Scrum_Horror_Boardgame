@@ -1,8 +1,8 @@
 # <center>Still down here
-<font color= grey> <center> By Roël Siemens, Barrie Doornbos, Lisa Werner, Cameron luttjes.</center> </font>
+<font color= grey> <center> By Roël Siemens, Barrie Doornbos, Lisa Werner, Cameron Luttje.</center> </font>
 
 ### <center>Inleiding
-<center>Dit is het testplan voor Still down here, gemaakt door Roël Siemens,Barrie Doornbos,Lisa Werner en Cameron Luttjes. Hierin staan onze testcases en testresultaten</center>
+<center>Dit is het testplan voor Still down here, gemaakt door Roël Siemens,Barrie Doornbos,Lisa Werner en Cameron Luttje. Hierin staan onze testcases en testresultaten</center>
 
 ### <center>Doel van de test</center>
 <center>Het doel van de test is om de userstory's te testen voor hun funcionaliteit.</center>

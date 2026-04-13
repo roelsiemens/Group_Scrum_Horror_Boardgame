@@ -36,5 +36,4 @@ Wij gaan gebruik maken van de volgende Technieken/Softwares:
 
 - **Blender:** Blender gaan we vooral gebruiken voor 3d modellen die worden geplaatst in onze game zoals: vijanden modellen, chest model, item modellen exc.
 
-- **Github:** Github gebruiken we zodat we samen kunnen werken aan één project. Door commits (het verzenden van de veranderingen) kunnen we elkaar hun veranderingen gebruiken en mergen (het mengen van twee apparte branches) in één grote branch (een tak waar apparte veranderingen komen en die later gemerged kunnen worden met andere takken) en zo een afgeronde spel opleveren. Github projects gebruiken we ook voor het plannen van alle taken en het overzichtelijk maken, zodat alles soepel verloopt. 
-
+- **Github:** Github gebruiken we zodat we samen kunnen werken aan één project. Door commits (het verzenden van de veranderingen) kunnen we elkaar hun veranderingen gebruiken en mergen (het mengen van twee apparte branches) in één grote branch (een tak waar apparte veranderingen komen en die later gemerged kunnen worden met andere takken) en zo een afgeronde spel opleveren. Github projects gebruiken we ook voor het plannen van alle taken en het overzichtelijk maken, zodat alles soepel verloopt.

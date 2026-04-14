@@ -26,6 +26,20 @@ Er bestaan veel klassieke bordspellen, van dammen tot schaken, van Monopoly tot 
 - De game is zo gebouwd dat ik na de tijd eventueel extra levels of onderdelen kan toevoegen om het verder uit te breiden.
 
 
+<details>
+<summary>Feedback pitch 1</summary>
+<img src="Screenshot 2026-04-14 134335.png" alt="Mail 1" width="100">
+</details>
+<details>
+<summary>Feedback pitch 2</summary>
+
+</details>
+<details>
+<summary>Feedback pitch 1</summary>
+
+</details>
+
+
 ## Gebruikte technieken
 
 We hebben gekozen om de game te maken in unity, omdat iederen in onze groep hier het bekendste mee is. 

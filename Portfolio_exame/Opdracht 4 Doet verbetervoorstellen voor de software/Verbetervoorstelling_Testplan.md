@@ -1,4 +1,4 @@
-# verbetervoorstelling Testplan
+# verbetervoorstellen Testplan
 
 Hieronder staan de verbetervoorstellingen die we hebben opgekpakt van de Tests. Doordat de verbetervoorstellingen niet zo groot waren is de plan maar klein en compact.
 

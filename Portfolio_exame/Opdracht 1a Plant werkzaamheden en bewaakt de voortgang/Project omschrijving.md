@@ -28,15 +28,15 @@ Er bestaan veel klassieke bordspellen, van dammen tot schaken, van Monopoly tot 
 
 <details>
 <summary>Feedback pitch 1</summary>
-<img src="Screenshot 2026-04-14 134335.png" alt="Mail 1" width="100">
+<img src="img/Screenshot 2026-04-14 134335.png" alt="Mail 1" width="500">
 </details>
 <details>
 <summary>Feedback pitch 2</summary>
-
+<img src="img/Screenshot 2026-04-14 135504.png" alt="Mail 1" width="500">
 </details>
 <details>
-<summary>Feedback pitch 1</summary>
-
+<summary>Feedback e-mail</summary>
+<img src="img/Screenshot 2026-04-14 135716.png" alt="Mail 1" width="500">
 </details>
 
 

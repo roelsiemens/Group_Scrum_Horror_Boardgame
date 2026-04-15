@@ -39,8 +39,10 @@ Er bestaan veel klassieke bordspellen, van dammen tot schaken, van Monopoly tot 
 <img src="img/Screenshot 2026-04-14 135716.png" alt="Mail 1" width="500">
 </details>
 
-
+<br>
 Na alle pitches en besprekingen kwamen we met de opdrachtgever overeen en hebben daar alle eisen en wensen onderbouwd.
+
+<br>
 
 **De game is speelbaar op PC. Het mag bestuurd worden met muis en toetsenbord of een gamepad.**
 
@@ -51,6 +53,7 @@ Dit is de bijbehorende Userstory.
     
     Done wanneer:
     * De speler met zijn toetsenbord kan lopen
+    * De speler met zijn toetsenbord kan bukken
     * De speler kan rondkijken met zijn muis
 
 <br>
@@ -67,6 +70,7 @@ Dit zijn de bijbehorende Userstory's:
     Done wanneer:
     * Er een volledige map is waar de speler zich in verdwaalt kan raken
     * Er prefabs zijn gemaakt, zodat de map makkelijk uit te breiden is
+    * Er kamers zijn met loot
 
 * Als speler wil ik een enge ai monster hebben die rondjes om de map loopt
 
@@ -74,6 +78,7 @@ Dit zijn de bijbehorende Userstory's:
     * Er een AI is die random punten pakt uit de map om heen te lopen
     * De AI de speler detecteert en achter hem aan gaat
     * De speler kan vangen en laat teleporten naar een Random kamer zonder loot
+    * Alle bijbehorende functies aanpasbaar zijn in de game engine
 
 **De game hoeft niet letterlijk een bord-of-kaartspel te zijn, maar moet wel duidelijk gebaseerd zijn op jullie gekozen spel - en niet alleen visueel. Ik verwacht niet "Slenderman maar je wordt achtervolgd door een schaakstuk." Denk goed na over hoe jullie gekozen game werkt en hoe je dat kunt vertalen naar een horrorgame.**
 
@@ -84,17 +89,38 @@ Dit zijn de bijbehorende Userstory's:
 * Als speler wil ik een sanity meter die mijn visie gekker maakt als me sanity 0 is
 
     Done wanneer:
-    * .
-    * .
+    * De sanity meter van 100 naar 0 kan dalen
+    * De speler gold laat vallen en dat er enge geluiden worden afgespeelt als de sanity 0 is
     
 
 **In dit project maken jullie een 'vertical slice.' De game heeft een start en einde en daar tussenin bestaat een korte maar complete demonstratie van hoe de game speelt.**
 
 In ons spel gaan wij dit verwerken door tijdens het spelen simpele instructies te laten zien, zodat de speler tijdens het spelen het spel begint te begrijpen en dan in 1 keer door kan. 
 
+* Als speler wil ik een simpele tutorial hebben die me het spel goed uitlegt
+
+    Done wanneer:
+    * De speler simpele instructies kan volgen
+    * De game start wanneer de tutorial voltooid is
+
 **De game is zo gebouwd dat ik na de tijd eventueel extra levels of onderdelen kan toevoegen om het verder uit te breiden.**
 
 Om het spel verder uitbrijkbaar te laten maken hebben gaan we tijdens het maken van het spel als voorbeeld de map maken met prefabs, zodat je de map steeds verder kan door bouwen. Met de monsters gaan we een script maken die je via de Game software(Unity) in de inspector de waardes zoals: Snelheid, detectie afstand en kijkhoek kan aanpassen.
+
+* Als speler wil ik een enge ai monster hebben die rondjes om de map loopt
+
+    Done wanneer:
+    * Er een AI is die random punten pakt uit de map om heen te lopen
+    * De AI de speler detecteert en achter hem aan gaat
+    * De speler kan vangen en laat teleporten naar een Random kamer zonder loot
+    * Alle bijbehorende functies aanpasbaar zijn in de game engine
+
+* Als speler wil ik een enge map hebben waar kamers met loot in zitten
+    
+    Done wanneer:
+    * Er een volledige map is waar de speler zich in verdwaalt kan raken
+    * Er prefabs zijn gemaakt, zodat de map makkelijk uit te breiden is
+    * Er kamers zijn met loot
 
 ## Gebruikte technieken
 

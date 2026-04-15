@@ -6,11 +6,12 @@ TagManager:
   tags:
   - pickUp
   - Alter
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pickup
   - Water
   - UI
   - 

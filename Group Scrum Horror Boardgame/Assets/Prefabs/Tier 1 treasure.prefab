@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc194bc1be8bba6490d59425abb060b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sanityManager: {fileID: 0}
+  _sanityManager: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
   _audioSource: {fileID: 8043138247132151183}
   _jumpScareObject: {fileID: 396176901198474211, guid: c5307fe0b6ad46b5cbfa91c42cfc4c12, type: 3}
   _jumpScareAnimator: {fileID: 0}

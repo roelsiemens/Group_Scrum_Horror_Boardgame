@@ -3,44 +3,61 @@ using UnityEngine.UI;
 
 public class SanityManager : MonoBehaviour
 {
-    // marking the private variables wuith _
+    // marking the private variables with _underscore
     private const int _maxSanity = 100;
     private const int _minSanity = 0;
     private float _currentSanity;
-    private int _sanityDrainSpeed = 1;
+    public int _sanityMultiplier = 1;
 
-    // Testing stuff
-    public bool decrease = true;
+    // Player reference
+    private GameObject _playerGO;
+    [SerializeField] private bool isHoldingTorch = false;
 
     private void Awake()
     {
         _currentSanity = _maxSanity;
+        _playerGO = GameObject.FindGameObjectWithTag("Player");
+        if (_playerGO == null)
+        {
+            Debug.Log("No player object found!");
+        }
     }
 
     private void Update()
     {
-        // Testing stuff
-        if(decrease)
+        if (_currentSanity <= 0)
         {
-            DrainCurrentSanity(Time.deltaTime);
+            TempLoseGame();
+            return;
         }
-        else
+        
+        if(isHoldingTorch)
         {
             RestoreCurrentSanity(Time.deltaTime);
         }
+        else
+        {
+            DrainCurrentSanity(Time.deltaTime);
+        }
+
+        if(_currentSanity <= ((double)  _maxSanity / 100)* 25)
+        {
+            Debug.unityLogger.Log("You lost a quarter of your sanity");
+        }
+        else if(_currentSanity <= ((double)  _maxSanity / 100)* 50)
+        {
+            Debug.unityLogger.Log("You lost a half of your sanity");
+        } 
+        else if(_currentSanity <= ((double)  _maxSanity / 100)* 75)
+        {
+            Debug.unityLogger.Log("You lost three quarters of your sanity");
+        }
+        
     }
 
-    // testing stuff
-   // private void OnGUI()
-    // {
-        // GUI.Box(new Rect (350, 10, Screen.width / 2 / (_maxSanity / _currentSanity), 25), "Sanity" + _currentSanity + "/" + _maxSanity);
-   // }
-
-    /// <summary>
-    /// This method returns the maximun sanity value.
-    /// </summary>
-    public float GetMaxSanity(){
-        return _maxSanity;
+    public void TempLoseGame()
+    {
+        Debug.Log("You lose the game");
     }
 
     /// <summary>
@@ -48,6 +65,14 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     public float GetCurrentSanity(){
         return _currentSanity;
+    }
+
+    /// <summary>
+    /// This method returns the maximum sanity value.
+    /// </summary>
+    public float GetMaxSanity()
+    {
+        return _maxSanity;
     }
 
     /// <summary>
@@ -64,7 +89,7 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     /// <param name="deltaTime">the time value over which the value is lowered.</param>
     public void DrainCurrentSanity(float deltaTime){
-        _currentSanity = Mathf.Clamp(_currentSanity - (Time.deltaTime * (1 /_sanityDrainSpeed)), 0.0f, _maxSanity);
+        _currentSanity = Mathf.Clamp(_currentSanity - (Time.deltaTime * _sanityMultiplier), _minSanity, _maxSanity);
     }
 
     /// <summary>
@@ -72,7 +97,6 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     /// <param name="deltaTime">the time value over which the value is increased.</param>
     public void RestoreCurrentSanity(float deltaTime){
-        _currentSanity = Mathf.Clamp(_currentSanity + (Time.deltaTime * (1 /_sanityDrainSpeed)), 0.0f, _maxSanity);
+        _currentSanity = Mathf.Clamp(_currentSanity + (Time.deltaTime * _sanityMultiplier), _minSanity, _maxSanity);
     }
-
 }

@@ -40,6 +40,10 @@ public class FirstPersonController : MonoBehaviour
 
     // Internal Variables
     private bool isWalking = false;
+    private Inventory playerInventory;
+    public float baseWalkSpeed = 5f;
+    public float slowPerCoin = 0.01f; // how much each coin slows your movement
+    public float minSpeed = 2f; // absolute minimum speed
     #endregion
 
     #region Crouch
@@ -72,6 +76,7 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerInventory = GetComponent<Inventory>();
 
         crosshairObject = GetComponentInChildren<Image>();
 
@@ -151,7 +156,17 @@ public class FirstPersonController : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        Vector3 targetVelocity = move * walkSpeed;
+
+        // Calculate speed based on coins
+        float currentSpeed = baseWalkSpeed;
+
+        if (playerInventory != null)
+        {
+            float coinPenalty = playerInventory.coinsHeld * slowPerCoin;
+            currentSpeed = Mathf.Clamp(baseWalkSpeed - coinPenalty, minSpeed, baseWalkSpeed);
+        }
+
+        Vector3 targetVelocity = move * currentSpeed;
 
         // Get current velocity
         Vector3 velocity = rb.linearVelocity;

@@ -8,7 +8,7 @@ public class treasureChest : MonoBehaviour
     public Mesh openedChestMesh;
     private Collider chestCollider;
     public GameObject coins;
-    public TextMeshProUGUI chestText;
+    public GameObject spell;
 
     private bool isPlayerInRange = false;
     private bool coinsInChest = false;
@@ -23,11 +23,13 @@ public class treasureChest : MonoBehaviour
     public int maxGoldInChest = 500;
 
     private Inventory playerInventory;
+    private JumpScareManager jumpScareManager;
 
     private void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
         chestCollider = GetComponent<Collider>();
+        jumpScareManager = GetComponent<JumpScareManager>();
         randomNumber = Random.Range(0, 101);
     }
     private void Update()
@@ -36,12 +38,10 @@ public class treasureChest : MonoBehaviour
         {
             meshFilter.mesh = openedChestMesh;
             treasureReward();
-            chestText.text = "Press 'E' to pick up";
             if (!coinsInChest)
             {
                 chestCollider.enabled = false;
                 isPlayerInRange = false;
-                chestText.text = "";
             }
         }
         if (isPlayerInRange && coinsInChest && Input.GetKeyDown(KeyCode.E))
@@ -50,7 +50,6 @@ public class treasureChest : MonoBehaviour
             coins.SetActive(false);
             chestCollider.enabled = false;
             isPlayerInRange = false;
-            chestText.text = "";
             playerInventory.coinsHeld += goldCoinsFound;
         }
     }
@@ -60,14 +59,6 @@ public class treasureChest : MonoBehaviour
         {
             playerInventory = other.GetComponent<Inventory>();
             isPlayerInRange = true;
-            if (!coinsInChest)
-            {
-                chestText.text = "Press 'E' to open";
-            }
-            else
-            {
-                chestText.text = "Press 'Q' to pick up";
-            }
         }
     }
 
@@ -76,7 +67,6 @@ public class treasureChest : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             isPlayerInRange = false;
-            chestText.text = "";
         }
     }
 
@@ -84,11 +74,11 @@ public class treasureChest : MonoBehaviour
     {
         if (randomNumber < jumpscareChance)
         {
-            Debug.Log("jumpscare!");
+            jumpScareManager.GetJumpScared(5);
         }
         else if (randomNumber >= jumpscareChance && randomNumber < jumpscareChance + itemChance)
         {
-            Debug.Log("You found an item!");
+            spell.SetActive(true);
         } 
         else if (randomNumber >= jumpscareChance + itemChance && randomNumber < jumpscareChance + itemChance + emptyChance)
         {

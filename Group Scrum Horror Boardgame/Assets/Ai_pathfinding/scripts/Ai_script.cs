@@ -7,6 +7,7 @@ public class Ai_script : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public GameObject[] target;
     public GameObject[] teleportlocation;
+    private Inventory inventory;
 
     public Transform player;          // speler referentie
     public float detectionRange = 10f;
@@ -18,6 +19,8 @@ public class Ai_script : MonoBehaviour
     void Start()
     {
         GoToRandomTarget();
+
+        inventory = player.GetComponent<Inventory>();
     }
 
     void Update()
@@ -95,5 +98,8 @@ public class Ai_script : MonoBehaviour
         Debug.Log("Speler aangeraakt");
         int index = Random.Range(0, teleportlocation.Length);
         player.position = teleportlocation[index].transform.position;
+        float aftrekking = inventory.coinsHeld * 0.9f;
+        inventory.coinsHeld = Mathf.RoundToInt(aftrekking);
+        Debug.Log(inventory.coinsHeld);
     }
 }

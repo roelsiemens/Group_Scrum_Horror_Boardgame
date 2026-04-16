@@ -7,7 +7,7 @@ public class SanityManager : MonoBehaviour
     private const int _maxSanity = 100;
     private const int _minSanity = 0;
     private float _currentSanity;
-    [SerializeField] private int _sanityDrainSpeed = 1;
+    public int _sanityMultiplier = 1;
 
     // Player reference
     private GameObject _playerGO;
@@ -64,7 +64,7 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     /// <param name="deltaTime">the time value over which the value is lowered.</param>
     public void DrainCurrentSanity(float deltaTime){
-        _currentSanity = Mathf.Clamp(_currentSanity - (Time.deltaTime /_sanityDrainSpeed), _minSanity, _maxSanity);
+        _currentSanity = Mathf.Clamp(_currentSanity - (Time.deltaTime * _sanityMultiplier), _minSanity, _maxSanity);
     }
 
     /// <summary>
@@ -72,6 +72,6 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     /// <param name="deltaTime">the time value over which the value is increased.</param>
     public void RestoreCurrentSanity(float deltaTime){
-        _currentSanity = Mathf.Clamp(_currentSanity + (Time.deltaTime /_sanityDrainSpeed), _minSanity, _maxSanity);
+        _currentSanity = Mathf.Clamp(_currentSanity + (Time.deltaTime * _sanityMultiplier), _minSanity, _maxSanity);
     }
 }

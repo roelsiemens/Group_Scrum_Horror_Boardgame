@@ -320,7 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa84cbe405aba5445b7dd504a05cbe65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decrease: 1
+  _sanityDrainSpeed: 1
+  isHoldingTorch: 0
 --- !u!1 &793404815
 GameObject:
   m_ObjectHideFlags: 0

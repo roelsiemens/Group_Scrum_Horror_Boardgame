@@ -17,24 +17,48 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private bool isHoldingTorch = false;
 
     [Header("Sanity Visual Settings")]
-    [SerializeField] private Volume _sanityVolume;
-    [SerializeField] private LensDistortion _lenseDistortion;
-    [SerializeField] private Vignette _vignette;
-    [SerializeField] private AudioSource _whisperSource;
     [SerializeField] private Camera _playerCamera;
+    [SerializeField] private Volume _sanityVolume;
+    [SerializeField] private float _effectTransitionSpeed = 1f;
+    private LensDistortion _lenseDistortion;
+    private ChromaticAberration _chromaticAberration;
+    private Vignette _vignette;
+    
+    [Header("Sanity Audio Settings")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _sanity1Clip;
+    [SerializeField] private AudioClip _sanity2Clip;
+    [SerializeField] private AudioClip _sanity3Clip;
+    [SerializeField] private AudioClip _sanity4Clip;
+
+    private enum SanityState
+    {
+        Level1, 
+        Level2, 
+        Level3, 
+        Level4
+    }
+    private SanityState _currentState;
     
     private void Awake()
     {
-        _sanityVolume.weight = 0;
+        _sanityVolume.weight = 1;
         _currentSanity = _maxSanity;
         if (_sanityVolume.profile.TryGet(out _lenseDistortion))
         {
-            _lenseDistortion.intensity.Override(0f);
+            _lenseDistortion.intensity.Override(0);
+            _lenseDistortion.active = true;
+        }
+        if (_sanityVolume.profile.TryGet(out _chromaticAberration))
+        {
+            _chromaticAberration.intensity.Override(0);
+            _chromaticAberration.active = true;
         }
 
         if (_sanityVolume.profile.TryGet(out _vignette))
         {
-            _vignette.intensity.Override(0f);
+            _vignette.intensity.Override(0);
+            _vignette.active = true;
         }
     }
     
@@ -55,26 +79,78 @@ public class SanityManager : MonoBehaviour
             DrainCurrentSanity(Time.deltaTime);
         }
         
-        if(_currentSanity < _sanityFactor * 25)
+        SanityState newState = GetSanityState();
+
+        if (newState != _currentState)
         {
-            SanityLevel4();
+            _currentState = newState;
+            ApplySanityState(_currentState);
         }
-        else if (_currentSanity < _sanityFactor * 50)
-        {
-            SanityLevel3();
-        }
-        else if(_currentSanity < _sanityFactor * 75)
-        {
-            SanityLevel2();
-        }
-        else
-        {
-            SanityLevel1();
-        }
-        
     }
 
-    public IEnumerator ZoomEffect(float targetFOV, float duration)
+    private SanityState GetSanityState()
+    {
+        if(_currentSanity < _sanityFactor * 25)
+        {
+            return SanityState.Level4;
+        }
+        if (_currentSanity < _sanityFactor * 50)
+        {
+            return SanityState.Level3;
+        }
+        if(_currentSanity < _sanityFactor * 75)
+        {
+            return SanityState.Level2;
+        }
+        
+        return SanityState.Level1;
+    }
+
+    private void ApplySanityState(SanityState state)
+    {
+        StopAllCoroutines();
+
+        switch (state)
+        {
+            case SanityState.Level1:
+                StartCoroutine(WarpEffect(60f, 0f,_effectTransitionSpeed));
+                ChromaticAberration(0f);
+                VignetteEffect(0f);
+                _audioSource.clip = _sanity1Clip;
+                _audioSource.Play();
+                break;
+            case SanityState.Level2:
+                // Warping effect on the camera/ camera zooming in or out.
+                StartCoroutine(WarpEffect(55f, 0.25f,_effectTransitionSpeed));
+                ChromaticAberration(1f);
+                // Hearing whispering in the distance or other disturbing sounds. (for now I have only the whisper)
+                _audioSource.clip = _sanity2Clip;
+                _audioSource.Play();
+                break;
+            case SanityState.Level3:
+                Debug.unityLogger.Log("You lost a half of your sanity. You heart is pounding and you feel your hands shake.");
+                // Increase warping effect 
+                StartCoroutine(WarpEffect(50f, 0.5f ,_effectTransitionSpeed));
+                VignetteEffect(0.6f);
+                // Play more disturbing sound effect
+                _audioSource.clip = _sanity3Clip;
+                _audioSource.Play();
+                break;
+            case SanityState.Level4:
+                _audioSource.clip = _sanity3Clip;
+                _audioSource.Play();
+                break;
+        }
+    }
+    
+    /// <summary>
+    /// Camera visual effects.
+    /// </summary>
+    /// <param name="targetFOV">Field of view it will lerp towards</param>
+    /// <param name="targetLensDistortion">Lens distortion value it will lerp towards</param>
+    /// <param name="duration">How long it takes to reach the target values</param>
+    /// <returns></returns>
+    public IEnumerator WarpEffect(float targetFOV, float targetLensDistortion, float duration)
     {
         float startFOV = _playerCamera.fieldOfView;
         float time = 0;
@@ -82,64 +158,23 @@ public class SanityManager : MonoBehaviour
         while (time < duration)
         {
             _playerCamera.fieldOfView = Mathf.Lerp(startFOV, targetFOV, time / duration);
+            _lenseDistortion.intensity.Override(Mathf.Lerp(_lenseDistortion.intensity.value, targetLensDistortion, time / duration));
             time += Time.deltaTime;
             yield return null;
         }
         _playerCamera.fieldOfView = targetFOV;
+        _lenseDistortion.intensity.Override(targetLensDistortion);
     }
-    public IEnumerator BlurEffect(float targetIntensity, float duration)
-    {
-        float time = 0;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    public void WarpEffect(float intensity)
-    {
-        _lenseDistortion.intensity.Override(intensity);
-    }
+    
     public void VignetteEffect(float intensity)
     {
         _lenseDistortion.intensity.Override(intensity);
     }
-
-    // Sanity levels, the higher the number the less sane the player is.
-    private void SanityLevel1()
+    public void ChromaticAberration(float intensity)
     {
-        Debug.unityLogger.Log("Crystal clear mind");
+        _chromaticAberration.intensity.Override(intensity);
     }
-
-    private void SanityLevel2()
-    {
-        Debug.unityLogger.Log("You lost a quarter of your sanity. A slight headache sets in");
-        // Warping effect on the camera/ camera zooming in or out.
-        StartCoroutine(ZoomEffect(75f, 4f));
-        _sanityVolume.weight = 1f;
-        WarpEffect(0.25f);
-        VignetteEffect(0.2f);
-        // Hearing whispering in the distance or other disturbing sounds. (for now I have only the whisper)
-    }
-
-    private void SanityLevel3()
-    {
-        Debug.unityLogger.Log("You lost a half of your sanity. You heart is pounding and you feel your hands shake.");
-        // Increase warping effect 
-        // Play more disturbing sound effect
-    }
-
-    private void SanityLevel4()
-    {
-        Debug.unityLogger.Log("You lost three quarters of your sanity. Are you still sane...?");
-        // Spawn fake monsters into the scene
-        // Play mimic jump scare even if the chest does not contain one. 
-        // collapse player, play high pitch scream. This alerts enemies nearby. 
-        // Player is slowed for a brief time and cannot crouch. 
-    }
-
+    
     private void TempLoseGame()
     {
         Time.timeScale = 0;

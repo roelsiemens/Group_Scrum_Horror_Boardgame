@@ -6128,6 +6128,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6126139029623467700}
     - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 2044277849}
+    - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
+      propertyPath: _sanity1Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4960441a409e28bf597f2121f9f28e3d, type: 3}
+    - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
+      propertyPath: _sanity2Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a127f2c827c8e45b9c75e0ca76dc25d, type: 3}
+    - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
+      propertyPath: _sanity3Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 38b9923a559d43e2bb92d4eea0e850b5, type: 3}
+    - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
+      propertyPath: _sanity4Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 38b9923a559d43e2bb92d4eea0e850b5, type: 3}
+    - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 1072592520}
@@ -6145,7 +6165,7 @@ PrefabInstance:
       objectReference: {fileID: 2044277849}
     - target: {fileID: 3715140912102190841, guid: f4a3856fde69d5d4a99adf5faa35386c, type: 3}
       propertyPath: _sanityMultiplier
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9739,7 +9759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680537155139729691, guid: ea5a96815e938f244bb60dbd6b589faa, type: 3}
       propertyPath: weight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8975062862474543409, guid: ea5a96815e938f244bb60dbd6b589faa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16858,6 +16878,14 @@ PrefabInstance:
     - target: {fileID: 4202280536319438864, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
       propertyPath: m_Name
       value: SanityAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517420988301747098, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517420988301747098, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

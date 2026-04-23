@@ -1,7 +1,10 @@
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+
 
 public class SanityManager : MonoBehaviour
 {
@@ -31,7 +34,15 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private AudioClip _sanity3Clip;
     [SerializeField] private AudioClip _sanity4Clip;
 
-    private enum SanityState
+    [Header("Sanity UI Settings")] 
+    [SerializeField] private Image _uiImage;
+        
+    [SerializeField] private Sprite _level1Sprite;
+    [SerializeField] private Sprite _level2Sprite;
+    [SerializeField] private Sprite _level3Sprite;
+    [SerializeField] private Sprite _level4Sprite;
+    
+    public enum SanityState
     {
         Level1, 
         Level2, 
@@ -88,7 +99,7 @@ public class SanityManager : MonoBehaviour
         }
     }
 
-    private SanityState GetSanityState()
+    public SanityState GetSanityState()
     {
         if(_currentSanity < _sanityFactor * 25)
         {
@@ -113,6 +124,7 @@ public class SanityManager : MonoBehaviour
         switch (state)
         {
             case SanityState.Level1:
+                _uiImage.sprite = _level1Sprite;
                 StartCoroutine(WarpEffect(60f, 0f,_effectTransitionSpeed));
                 ChromaticAberration(0f);
                 VignetteEffect(0f);
@@ -120,6 +132,7 @@ public class SanityManager : MonoBehaviour
                 _audioSource.Play();
                 break;
             case SanityState.Level2:
+                _uiImage.sprite = _level2Sprite;
                 // Warping effect on the camera/ camera zooming in or out.
                 StartCoroutine(WarpEffect(55f, 0.25f,_effectTransitionSpeed));
                 ChromaticAberration(1f);
@@ -128,6 +141,7 @@ public class SanityManager : MonoBehaviour
                 _audioSource.Play();
                 break;
             case SanityState.Level3:
+                _uiImage.sprite = _level3Sprite;
                 Debug.unityLogger.Log("You lost a half of your sanity. You heart is pounding and you feel your hands shake.");
                 // Increase warping effect 
                 StartCoroutine(WarpEffect(50f, 0.5f ,_effectTransitionSpeed));
@@ -137,6 +151,7 @@ public class SanityManager : MonoBehaviour
                 _audioSource.Play();
                 break;
             case SanityState.Level4:
+                _uiImage.sprite = _level4Sprite;
                 _audioSource.clip = _sanity3Clip;
                 _audioSource.Play();
                 break;
@@ -223,5 +238,4 @@ public class SanityManager : MonoBehaviour
     {
         _currentSanity = Mathf.Clamp(_currentSanity + (deltaTime * _sanityMultiplier), _minSanity, _maxSanity);
     }
-    
 }

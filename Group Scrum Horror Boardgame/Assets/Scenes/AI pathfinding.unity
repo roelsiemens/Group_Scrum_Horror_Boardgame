@@ -773,6 +773,9 @@ MonoBehaviour:
   detectionRange: 10
   fieldOfView: 60
   stopDistance: 1
+  normalSpeed: 3.5
+  chaseSpeed: 5
+  reactionDelay: 1
 --- !u!195 &1262323837
 NavMeshAgent:
   m_ObjectHideFlags: 0

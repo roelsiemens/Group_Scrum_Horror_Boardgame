@@ -4,7 +4,7 @@ public class Altar : MonoBehaviour
 {
     private Inventory playerInventory;
 
-    public int coinsRequired = 1000;
+    [SerializeField] private int coinsRequired = 1000;
     private int startingCoinsRequired;
 
     private bool inRange = false;
@@ -14,6 +14,7 @@ public class Altar : MonoBehaviour
 
     private float moveSpeed = 1f;
 
+    [SerializeField] private GameObject hiddenDoor;
     private void Start()
     {
         startingCoinsRequired = coinsRequired;
@@ -29,15 +30,19 @@ public class Altar : MonoBehaviour
         pos.y = Mathf.MoveTowards(pos.y, targetY, moveSpeed * Time.deltaTime);
         transform.position = pos;
 
-        if (inRange && Input.GetKeyDown(KeyCode.E))
+        if (inRange && Input.GetKeyDown(KeyCode.E) && coinsRequired > 0 && playerInventory.coinsHeld > 50)
         {
+            coinsRequired -= 50;
+            playerInventory.coinsHeld -= 50;
+        } else if (inRange && Input.GetKeyDown(KeyCode.E) && coinsRequired > 0) {
             coinsRequired -= playerInventory.coinsHeld;
             playerInventory.coinsHeld = 0;
         }
 
         if (coinsRequired <= 0)
         {
-            Debug.Log("Game over! you won!");
+            Vector3 targetPosition = new Vector3(hiddenDoor.transform.position.x, 3.5f, hiddenDoor.transform.position.z);
+            hiddenDoor.transform.position = Vector3.MoveTowards(hiddenDoor.transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
 

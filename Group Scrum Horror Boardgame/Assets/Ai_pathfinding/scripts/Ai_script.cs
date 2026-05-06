@@ -67,12 +67,12 @@ public class Ai_script : MonoBehaviour
 
     IEnumerator StartChase()
     {
-        isWaiting = true;
-
         navMeshAgent.ResetPath();
         navMeshAgent.speed = 0f;
 
         yield return new WaitForSeconds(reactionDelay);
+
+        Debug.Log("chase");
 
         isChasing = true;
         isWaiting = false;
@@ -103,6 +103,7 @@ public class Ai_script : MonoBehaviour
 
                         if (!isChasing && !isWaiting)
                         {
+                            isWaiting = true; // 🔥 meteen blokkeren
                             StartCoroutine(StartChase());
                         }
 

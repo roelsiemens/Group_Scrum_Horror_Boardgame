@@ -89,14 +89,14 @@ public class SanityManager : MonoBehaviour
             return;
         }
         
-        // if(_inventory.isHoldingTorch)
-        // {
-        //     RestoreCurrentSanity(Time.deltaTime);
-        // }
-        // else
-        // {
-        //     DrainCurrentSanity(Time.deltaTime);
-        // }
+        if(_inventory.isHoldingTorch)
+        {
+            RestoreCurrentSanity(Time.deltaTime);
+        }
+        else
+        {
+            DrainCurrentSanity(Time.deltaTime);
+        }
         
         SanityState newState = GetSanityState();
 

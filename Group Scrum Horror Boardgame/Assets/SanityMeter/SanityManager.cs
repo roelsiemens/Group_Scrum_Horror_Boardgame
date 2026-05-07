@@ -16,8 +16,8 @@ public class SanityManager : MonoBehaviour
     private float _currentSanity;
     [SerializeField] private int _sanityMultiplier = 1;
 
-    // testing 
-    [SerializeField] private bool isHoldingTorch = false;
+    [Header("Holding Torch")] 
+    [SerializeField] private Inventory _inventory;
 
     [Header("Sanity Visual Settings")]
     [SerializeField] private Camera _playerCamera;
@@ -26,6 +26,10 @@ public class SanityManager : MonoBehaviour
     private LensDistortion _lenseDistortion;
     private ChromaticAberration _chromaticAberration;
     private Vignette _vignette;
+
+    [Header("Temp Game Over visual effects")]
+    [SerializeField] private Volume _gameoverVolume;
+    [SerializeField] private AudioClip _gameoverClip;
     
     [Header("Sanity Audio Settings")]
     [SerializeField] private AudioSource _audioSource;
@@ -34,7 +38,7 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private AudioClip _sanity3Clip;
     [SerializeField] private AudioClip _sanity4Clip;
 
-    [Header("Sanity UI Settings")] 
+    [Header("Sanity UI Settings")]
     [SerializeField] private Image _uiImage;
         
     [SerializeField] private Sprite _level1Sprite;
@@ -53,6 +57,10 @@ public class SanityManager : MonoBehaviour
     
     private void Awake()
     {
+        if (_inventory == null)
+        {
+            _inventory = GetComponent<Inventory>();
+        }
         _sanityVolume.weight = 1;
         _currentSanity = _maxSanity;
         if (_sanityVolume.profile.TryGet(out _lenseDistortion))
@@ -81,14 +89,14 @@ public class SanityManager : MonoBehaviour
             return;
         }
         
-        if(isHoldingTorch)
-        {
-            RestoreCurrentSanity(Time.deltaTime);
-        }
-        else
-        {
-            DrainCurrentSanity(Time.deltaTime);
-        }
+        // if(_inventory.isHoldingTorch)
+        // {
+        //     RestoreCurrentSanity(Time.deltaTime);
+        // }
+        // else
+        // {
+        //     DrainCurrentSanity(Time.deltaTime);
+        // }
         
         SanityState newState = GetSanityState();
 
@@ -194,6 +202,10 @@ public class SanityManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Debug.Log("You lose the game");
+        _gameoverVolume.enabled = true;
+        GameObject player = GameObject.Find("FirstPersonController Variant");
+        player.SetActive(false);
+
     }
     
     /// <summary>

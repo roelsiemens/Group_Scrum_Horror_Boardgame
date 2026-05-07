@@ -203,8 +203,8 @@ public class SanityManager : MonoBehaviour
         Time.timeScale = 0;
         Debug.Log("You lose the game");
         _gameoverVolume.enabled = true;
-        GameObject player = GameObject.Find("FirstPersonController Variant");
-        player.SetActive(false);
+        FirstPersonController player = GameObject.Find("FirstPersonController Variant").GetComponent<FirstPersonController>();
+        player.enabled = false;
 
     }
     

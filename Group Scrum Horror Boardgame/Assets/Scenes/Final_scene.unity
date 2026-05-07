@@ -2767,7 +2767,7 @@ MonoBehaviour:
   pickupRange: 3
   pickupLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   coinText: {fileID: 1914655899}
   coinsHeld: 0
 --- !u!1001 &978684607

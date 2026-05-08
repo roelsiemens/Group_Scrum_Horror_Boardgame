@@ -15,6 +15,9 @@ public class Altar : MonoBehaviour
     private float moveSpeed = 1f;
 
     [SerializeField] private GameObject hiddenDoor;
+    [SerializeField] private GameObject singleCoin;
+    [SerializeField] private GameObject multiCoin;
+    [SerializeField] private GameObject coinStack;
     private void Start()
     {
         startingCoinsRequired = coinsRequired;
@@ -44,6 +47,8 @@ public class Altar : MonoBehaviour
             Vector3 targetPosition = new Vector3(hiddenDoor.transform.position.x, 3.5f, hiddenDoor.transform.position.z);
             hiddenDoor.transform.position = Vector3.MoveTowards(hiddenDoor.transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
+
+        ShowCoinPile();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,6 +65,20 @@ public class Altar : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inRange = false;
+        }
+    }
+
+    private void ShowCoinPile()
+    {
+        if (coinsRequired < startingCoinsRequired / 100 * 15)
+        {
+            coinStack.SetActive(true);
+        } else if (coinsRequired < startingCoinsRequired / 100 * 75)
+        {
+            multiCoin.SetActive(true);
+        } else if (coinsRequired < startingCoinsRequired - 1)
+        {
+            singleCoin.SetActive(true);
         }
     }
 }

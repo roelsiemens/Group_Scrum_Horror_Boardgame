@@ -5,6 +5,7 @@ public class Inventory : MonoBehaviour
 {
     private bool leftHandEmpty = true;
     private bool rightHandEmpty = true;
+    public bool isHoldingTorch = false;
 
     private GameObject leftHandItem;
     private GameObject rightHandItem;
@@ -25,6 +26,7 @@ public class Inventory : MonoBehaviour
         HandlePickup();
         HandleDrop();
         UpdateUI();
+        CheckForTorch();
     }
 
     private void HandlePickup()
@@ -168,6 +170,31 @@ public class Inventory : MonoBehaviour
         if (coinText != null)
         {
             coinText.text = "Coins: " + coinsHeld;
+        }
+    }
+
+    protected void CheckForTorch()
+    {
+        bool HasTorch(Transform player)
+        {
+            foreach (Transform child in player.GetComponentsInChildren<Transform>())
+            {
+                if (child.CompareTag("Torch"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        if (HasTorch(transform))
+        {
+            isHoldingTorch = true;
+        }
+        else
+        {
+            isHoldingTorch = false;
         }
     }
 }

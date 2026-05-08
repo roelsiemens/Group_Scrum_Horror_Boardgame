@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5162437386613606979}
   - component: {fileID: 3379628651894672894}
   - component: {fileID: 3956369534970168172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
-  m_TagString: Untagged
+  m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5128,6 +5128,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
+      propertyPath: m_TagString
+      value: pickUp
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1073757ccebdad343ac95f1e24ff2da9, type: 3}
       propertyPath: m_Layer

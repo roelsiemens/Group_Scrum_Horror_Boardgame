@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5162437386613606979}
   - component: {fileID: 3379628651894672894}
   - component: {fileID: 3956369534970168172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light
-  m_TagString: Untagged
+  m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

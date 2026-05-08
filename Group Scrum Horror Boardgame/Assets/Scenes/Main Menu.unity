@@ -544,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &334312606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1235,6 +1235,7 @@ GameObject:
   - component: {fileID: 835841253}
   - component: {fileID: 835841252}
   - component: {fileID: 835841251}
+  - component: {fileID: 835841254}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1305,7 +1306,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 835841252}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 835841254}
+        m_TargetAssemblyTypeName: EndingMenu, Assembly-CSharp
+        m_MethodName: restartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &835841252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,6 +1357,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835841249}
   m_CullTransparentMesh: 1
+--- !u!114 &835841254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835841249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962fa230756d4ff43b4e99c34d6ffe3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &878731544
 GameObject:
   m_ObjectHideFlags: 0

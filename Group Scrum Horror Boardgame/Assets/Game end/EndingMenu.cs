@@ -8,7 +8,7 @@ public class EndingMenu : MonoBehaviour
     }
     public void mainMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main_menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
 
     public void restartGame()

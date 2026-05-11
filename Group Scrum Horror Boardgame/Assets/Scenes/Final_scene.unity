@@ -9325,6 +9325,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 65793823913809585, guid: ca65e1fa705450146864a0edf7ed7304, type: 3}
   m_PrefabInstance: {fileID: 2433130644309297635}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &726171728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1072592519}
+    m_Modifications:
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202280536319438864, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+      propertyPath: m_Name
+      value: SanityAudioSource
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+--- !u!4 &726171729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2609532980519902996, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+  m_PrefabInstance: {fileID: 726171728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &729980148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14366,6 +14428,7 @@ Transform:
   - {fileID: 1458247028}
   - {fileID: 782121722}
   - {fileID: 766101666}
+  - {fileID: 726171729}
   m_Father: {fileID: 6126139029623467704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1072592520
@@ -19327,7 +19390,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458247027}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1458247031
 Camera:
   m_ObjectHideFlags: 0
@@ -24435,6 +24498,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853577730}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &1858460556 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5517420988301747098, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+  m_PrefabInstance: {fileID: 726171728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1866372437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40494,7 +40562,7 @@ MonoBehaviour:
   _effectTransitionSpeed: 1
   _gameoverVolume: {fileID: 1340127738419497033, guid: 4d464fe5b6087186ca16193b45592429, type: 3}
   _gameoverClip: {fileID: 8300000, guid: 7be5e129202d87d4e91b07bcbf57a19f, type: 3}
-  _audioSource: {fileID: 5517420988301747098, guid: edd1ac8e3a887f61fbfc6d428058be88, type: 3}
+  _audioSource: {fileID: 1858460556}
   _sanity1Clip: {fileID: 8300000, guid: 4960441a409e28bf597f2121f9f28e3d, type: 3}
   _sanity2Clip: {fileID: 8300000, guid: 4a127f2c827c8e45b9c75e0ca76dc25d, type: 3}
   _sanity3Clip: {fileID: 8300000, guid: 38b9923a559d43e2bb92d4eea0e850b5, type: 3}

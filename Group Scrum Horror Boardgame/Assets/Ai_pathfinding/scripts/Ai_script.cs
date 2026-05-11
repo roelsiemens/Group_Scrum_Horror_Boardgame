@@ -100,7 +100,7 @@ public class Ai_script : MonoBehaviour
         Debug.Log("Speler aangeraakt");
         int index = Random.Range(0, teleportlocation.Length);
         player.position = teleportlocation[index].transform.position;
-        float aftrekking = inventory.coinsHeld * 0.9f;
+        float aftrekking = inventory.coinsHeld * 0.75f;
         inventory.coinsHeld = Mathf.RoundToInt(aftrekking);
         Debug.Log(inventory.coinsHeld);
     }

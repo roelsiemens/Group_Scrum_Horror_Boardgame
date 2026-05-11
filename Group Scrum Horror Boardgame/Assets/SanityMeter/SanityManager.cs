@@ -201,11 +201,8 @@ public class SanityManager : MonoBehaviour
     
     private void TempLoseGame()
     {
-        Time.timeScale = 0;
         Debug.Log("You lose the game");
         _gameoverVolume.enabled = true;
-        FirstPersonController player = GameObject.Find("FirstPersonController Variant").GetComponent<FirstPersonController>();
-        player.enabled = false;
         
         // Switch to Barries scene
         SceneManager.LoadScene("Game-over");

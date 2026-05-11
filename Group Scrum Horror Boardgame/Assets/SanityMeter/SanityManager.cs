@@ -3,6 +3,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -205,6 +206,9 @@ public class SanityManager : MonoBehaviour
         _gameoverVolume.enabled = true;
         FirstPersonController player = GameObject.Find("FirstPersonController Variant").GetComponent<FirstPersonController>();
         player.enabled = false;
+        
+        // Switch to Barries scene
+        SceneManager.LoadScene("Game-over");
 
     }
     

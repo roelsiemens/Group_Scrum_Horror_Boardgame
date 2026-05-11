@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cc7bb916d30c1064189c9e2324e563d7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 313465
+  packageName: Game Ready Rigged Demon Character
+  packageVersion: 1.0
+  assetPath: Assets/Snake3D/Game Ready Rigged Demon Character/Scripts/DefaultVolumeProfile.asset
+  uploadId: 741983

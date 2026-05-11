@@ -15,6 +15,7 @@ public class Ai_script : MonoBehaviour
     public float stopDistance = 3f;
 
     private bool playerDetected = false;
+    [SerializeField] Animator animator;
 
     void Start()
     {
@@ -83,6 +84,7 @@ public class Ai_script : MonoBehaviour
                     if (hit.transform == player)
                     {
                         playerDetected = true;
+                        animator.SetBool("isChasingAnimation", true); // Start chase animation
                         Debug.DrawRay(ray.origin, ray.direction * detectionRange, Color.red);
                         return;
                     }

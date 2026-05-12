@@ -4,11 +4,9 @@ Hieronder staan de verbetervoorstellingen die we hebben opgekpakt van de oplever
 
 Volgnummer| Probleem | oplossing | Persoon | Prioriteit | Verbeterd | Planning
 -|-|-|-|-|-|-
-Enemy Gedrag|Enemy wat enger maken dan alleenmaar rondlopen en reageren op de omgeving | | | | |
-Enemy design|De enemy had helemaal geen design en kon wel iets simpels hebben als design | | | | |
-Capture locatie beter maken| | | | | |
-Chest treasure|een limiet zetten op hoeveel er van een item is en dat sommige items moeten spawnen | | | | |
-Sanity functie| De sanity laten werken met het spel, zoals de camera raar laten lijken en sound effects spelen| | | | |
-Ui interface|De Ui is saai en standaard | | | | |
-Verliesen| Er is nog geen manier om te verliesen, zoals de sanity word 0 en er gebeurt niks.| | | | |
-Jumpscare niet eng| De jumpscare is niet eng genoeg en moet wat visuel enger worden | | | | |
+1.Enemy engheid|Enemy wat enger maken, omdat de enemy op één snelheid de hele dungeon rondloopt | De ai laten sprinten als die je ziet| Roël Siemens | Hoog | Nog niet begonnen | Start: 18/05/2026 End: 29/05/2026
+2.Enemy design|De enemy had geen passende design| Een passende enemy design maken in blender | Cameron Luttje| Medium| Nog niet begonnen| Start: 18/05/2026 End: 22/05/2026
+3.Ui interface|De Ui is van een andere game dus dat word gecopyright | Een eigen Sanity ui maken in bijvoorbeeld Paint.NET | Lisa Werner| Medium| Nog niet begonnen| Start: 18/05/2026 End: 20/05/2026
+4.Jumpscare niet eng| De jumpscare is niet eng genoeg en moet wat visuel enger worden | De Jumscare meer richting de camera laten springen en wat vaker laten gebeuren | Lisa Werner| Medium| Nog niet begonnen| Start: 21/05/2026 End: 29/05/2026
+5.Enemy gedrag op omgeving| De enemy heeft geen interactie met de omgeving | De enemy laten reageren op chesten die open gaan en coins die worden gewogen bij de start | Barrie Doornbos| Medium| Nog niet begonnen |Start: 18/05/2026 End: 22/05/2026
+6.Sanity fysieke interacties | De sanity meter had geen inteactie met de omgeving zoals dat er dingen inspawnen die niet bestaan | De sanity je omgeving laten beïnvloeden door er neppe monsters te plaatsen | Cameron Luttje| Medium | Nog niet begonnen| Start:25/05/2026 End:29/05/2026

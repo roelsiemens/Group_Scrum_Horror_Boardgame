@@ -54,3 +54,17 @@ Een issue is klaar wanneer:
 - De code is geaccepteerd.
 - De pull request is naar de merge branch gemerged door degene die de pull request
 gemaakt heeft
+
+### Privacy
+
+- onze game is heel privacy veilig, omdat de game local word gespeelt op je computer en je gegevens nergens voor worden gevraagd. In de game zelf word er ook nergens om gevraagd.
+
+### Security
+
+- In onze game komt security niet van toepassing.
+
+### ethiek
+
+- onze game is offline dus je kan het overal spelen.
+- De game word een kleine bedrag, waardoor bijna iedereen het kan betalen.
+- De game is niet hardware intensief, zodat iedereen het vloeiend kan spelen.

@@ -55,6 +55,8 @@ Een issue is klaar wanneer:
 - De pull request is naar de merge branch gemerged door degene die de pull request
 gemaakt heeft
 
+## Privacy/Security/ethiek
+
 ### Privacy
 
 - onze game is heel privacy veilig, omdat de game local word gespeelt op je computer en je gegevens nergens voor worden gevraagd. In de game zelf word er ook nergens om gevraagd.

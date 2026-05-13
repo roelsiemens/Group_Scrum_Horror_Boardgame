@@ -5,22 +5,22 @@ using TMPro;
 public class treasureChest : MonoBehaviour
 {
     private MeshFilter meshFilter;
-    public Mesh openedChestMesh;
+    [SerializeField] private Mesh openedChestMesh;
     private Collider chestCollider;
-    public GameObject coins;
-    public GameObject spell;
+    [SerializeField] private GameObject coins;
+    [SerializeField] private GameObject spell;
 
     private bool isPlayerInRange = false;
     private bool coinsInChest = false;
     private int randomNumber;
     private int goldCoinsFound;
 
-    public int jumpscareChance = 10;
-    public int itemChance = 10;
-    public int emptyChance = 25;
+    [SerializeField] private int jumpscareChance = 10;
+    [SerializeField] private int itemChance = 10;
+    [SerializeField] private int emptyChance = 25;
 
-    public int minGoldInChest = 250;
-    public int maxGoldInChest = 500;
+    [SerializeField] private int minGoldInChest = 250;
+    [SerializeField] private int maxGoldInChest = 500;
 
     private Inventory playerInventory;
     private JumpScareManager jumpScareManager;
@@ -34,24 +34,8 @@ public class treasureChest : MonoBehaviour
     }
     private void Update()
     {
-        if (isPlayerInRange && Input.GetKeyUp(KeyCode.E))
-        {
-            meshFilter.mesh = openedChestMesh;
-            treasureReward();
-            if (!coinsInChest)
-            {
-                chestCollider.enabled = false;
-                isPlayerInRange = false;
-            }
-        }
-        if (isPlayerInRange && coinsInChest && Input.GetKeyDown(KeyCode.E))
-        {
-            coinsInChest = false;
-            coins.SetActive(false);
-            chestCollider.enabled = false;
-            isPlayerInRange = false;
-            playerInventory.coinsHeld += goldCoinsFound;
-        }
+        openChest();
+        pickupCoins();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -70,6 +54,33 @@ public class treasureChest : MonoBehaviour
         }
     }
 
+    private void openChest()
+    {
+        if (isPlayerInRange && Input.GetKeyUp(KeyCode.E))
+        {
+            meshFilter.mesh = openedChestMesh;
+            treasureReward();
+            if (!coinsInChest)
+            {
+                chestCollider.enabled = false;
+                isPlayerInRange = false;
+            }
+        }
+    }
+
+    private void pickupCoins()
+    {
+        if (isPlayerInRange && coinsInChest && Input.GetKeyDown(KeyCode.E))
+        {
+            coinsInChest = false;
+            coins.SetActive(false);
+            chestCollider.enabled = false;
+            isPlayerInRange = false;
+            playerInventory.coinsHeld += goldCoinsFound;
+        }
+    }
+
+    //Bepaald de inhoud van de chest op basis van een willekeurig getal en de ingestelde kansen voor een jumpscare, item, lege chest of geld.
     private void treasureReward()
     {
         if (randomNumber < jumpscareChance)
@@ -92,6 +103,7 @@ public class treasureChest : MonoBehaviour
         }
     }
 
+    //bepaald de hoeveelheid coins die in de kist zitten op basis van de minimum en maximum hoeveelheid die ingesteld is
     private void goldAmountInChest()
     {
         goldCoinsFound = Random.Range(minGoldInChest, maxGoldInChest + 1);

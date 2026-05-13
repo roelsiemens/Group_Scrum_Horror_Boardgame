@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     private float rightHoldTimer = 0f;
     private float holdTimeToDrop = 1f;
 
-    public TextMeshProUGUI coinText;
+    [SerializeField] private TextMeshProUGUI coinText;
     public int coinsHeld;
 
     private void Update()

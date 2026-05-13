@@ -9,19 +9,29 @@ public class StunSpell : MonoBehaviour
     [SerializeField] private GameObject stunBeam;
     [SerializeField] private GameObject ballEffects;
 
-    public float stunDuration = 3;
+    [SerializeField] private float stunDuration = 3;
     public bool enemyHit = false;
     public GameObject enemy;
     public float originalSpeed;
 
     void Update()
     {
+        useSpell();
+        spellLogic();
+    }
+
+    private void useSpell()
+    {
         if (transform.root.CompareTag("Player") && Input.GetKeyDown(KeyCode.Space) && !spellUsed)
         {
             spellUsed = true;
             stunBeam.SetActive(true);
         }
+    }
 
+    private void spellLogic()
+    {
+        //verlaagd de timer zodat de spell voor 1 seconde actief is
         if (spellUsed)
         {
             beamTimer -= Time.deltaTime;
@@ -32,6 +42,7 @@ public class StunSpell : MonoBehaviour
             Destroy(ballEffects);
         }
 
+        //controleert of de spell een vijand heeft geraakt, zo ja, dan wordt de snelheid van de vijand op 0 gezet en na de stunDuration weer teruggezet naar de originele snelheid
         if (enemyHit)
         {
             enemyHit = false;

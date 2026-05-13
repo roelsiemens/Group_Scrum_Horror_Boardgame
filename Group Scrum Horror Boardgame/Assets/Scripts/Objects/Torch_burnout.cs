@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Torch_burnout : MonoBehaviour
 {
-    [SerializeField] private float burnTime = 45f;
+    private float burnTime = 45f;
     private Collider torchCollider;
     [SerializeField] private GameObject torchLight;
     [SerializeField] private GameObject torchParticle;
@@ -13,6 +13,7 @@ public class Torch_burnout : MonoBehaviour
         BurnOut();
     }
 
+    //laat een timer aftellen wanneer de speler de torch vasthoudt, wanneer de timer op 0 staat worden de light en particle system verwijderd
     private void BurnOut()
     {
         
